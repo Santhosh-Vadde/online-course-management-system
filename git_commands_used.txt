@@ -1,0 +1,96 @@
+GIT & GITHUB LAB EXPERIMENT - COMMANDS USED
+Project: Online Course Management System
+=============================================
+
+1. Check Git installation
+-------------------------
+git --version
+
+2. Check Git identity (name/email used for commits)
+----------------------------------------------------
+git config --global user.name
+git config --global user.email
+
+3. Initialize local repo and push starter project to GitHub
+-------------------------------------------------------------
+git init
+git add .
+git commit -m "Initial commit: base course management system"
+git branch -M main
+git remote add origin https://github.com/Santhosh-Vadde/online-course-management-system.git
+git push -u origin main
+
+4. Clone the repository to a fresh local folder
+-------------------------------------------------
+git clone https://github.com/Santhosh-Vadde/online-course-management-system.git
+
+5. Open the cloned project in VS Code
+----------------------------------------
+code .
+
+6. Inspect changes (after editing files)
+-------------------------------------------
+git status
+git diff
+
+7. Stage and commit a feature change (login functionality)
+--------------------------------------------------------------
+git add .
+git commit -m "Implement admin and student login functionality"
+git log -1 --oneline
+
+8. Modify index.html, then inspect again
+-------------------------------------------
+git status
+git diff
+
+9. Stage only index.html
+----------------------------
+git add index.html
+
+10. Commit the index.html change
+------------------------------------
+git commit -m "Update course management home page"
+
+11. Verify the latest commit
+---------------------------------
+git log -1 --oneline
+
+12. Undo the latest commit (keeps changes staged, nothing deleted)
+------------------------------------------------------------------------
+git reset --soft HEAD~1
+
+13. Verify commit history and status after the soft reset
+----------------------------------------------------------------
+git log -1 --oneline
+git status
+
+14. Unstage the changes (keeps file edits on disk, for further editing)
+-------------------------------------------------------------------------------
+git reset
+
+15. Final verification
+---------------------------
+git status
+git diff
+
+16. Re-commit the index.html change and push everything to GitHub
+------------------------------------------------------------------------
+git add index.html
+git commit -m "Update course management home page"
+git push origin main
+
+17. Added demo login credential hints, committed and pushed
+-----------------------------------------------------------------
+git add .
+git commit -m "Add demo login credentials hint"
+git push origin main
+
+=============================================
+NOTES
+=============================================
+- git reset --soft HEAD~1 removes the latest commit from branch history
+  but keeps all the changes staged (nothing is lost).
+- git reset (no flags) unstages changes while keeping the file
+  modifications available on disk for further editing.
+- git reset --hard was never used (it would have deleted file changes).
