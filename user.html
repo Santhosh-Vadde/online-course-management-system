@@ -19,22 +19,57 @@
     </nav>
 
     <main>
-        <section class="available-courses">
-            <h2>Available Courses</h2>
-            <ul>
-                <li>Introduction to Web Development - Mr. Sharma</li>
-                <li>Database Fundamentals - Ms. Rao</li>
-            </ul>
+        <section class="login-box" id="login-box">
+            <h2>Student Login</h2>
+            <form id="student-login-form">
+                <label for="student-username">Username:</label><br>
+                <input type="text" id="student-username" name="username" required><br><br>
+                <label for="student-password">Password:</label><br>
+                <input type="password" id="student-password" name="password" required><br><br>
+                <button type="submit">Login</button>
+                <p id="login-error" style="color:red; display:none;">Invalid username or password.</p>
+            </form>
         </section>
 
-        <section class="my-courses">
-            <h2>My Enrolled Courses</h2>
-            <p>You have not enrolled in any courses yet.</p>
-        </section>
+        <div id="student-dashboard" style="display:none;">
+            <section class="available-courses">
+                <h2>Available Courses</h2>
+                <ul>
+                    <li>Introduction to Web Development - Mr. Sharma</li>
+                    <li>Database Fundamentals - Ms. Rao</li>
+                </ul>
+            </section>
+
+            <section class="my-courses">
+                <h2>My Enrolled Courses</h2>
+                <p>You have not enrolled in any courses yet.</p>
+            </section>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Online Course Management System</p>
     </footer>
+
+    <script>
+        // Demo-only hardcoded credentials (no backend available)
+        const STUDENT_USERNAME = "student";
+        const STUDENT_PASSWORD = "student123";
+
+        document.getElementById("student-login-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("student-username").value;
+            const password = document.getElementById("student-password").value;
+            const errorMsg = document.getElementById("login-error");
+
+            if (username === STUDENT_USERNAME && password === STUDENT_PASSWORD) {
+                document.getElementById("login-box").style.display = "none";
+                document.getElementById("student-dashboard").style.display = "block";
+                errorMsg.style.display = "none";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>

@@ -19,40 +19,75 @@
     </nav>
 
     <main>
-        <section class="admin-actions">
-            <h2>Admin Actions</h2>
-            <ul>
-                <li>Add a new course</li>
-                <li>Edit existing course details</li>
-                <li>Remove a course</li>
-                <li>View enrolled students</li>
-            </ul>
+        <section class="login-box" id="login-box">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <label for="admin-username">Username:</label><br>
+                <input type="text" id="admin-username" name="username" required><br><br>
+                <label for="admin-password">Password:</label><br>
+                <input type="password" id="admin-password" name="password" required><br><br>
+                <button type="submit">Login</button>
+                <p id="login-error" style="color:red; display:none;">Invalid username or password.</p>
+            </form>
         </section>
 
-        <section class="course-list">
-            <h2>Current Courses</h2>
-            <table border="1" cellpadding="8" cellspacing="0">
-                <tr>
-                    <th>Course Name</th>
-                    <th>Instructor</th>
-                    <th>Seats Available</th>
-                </tr>
-                <tr>
-                    <td>Introduction to Web Development</td>
-                    <td>Mr. Sharma</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>Database Fundamentals</td>
-                    <td>Ms. Rao</td>
-                    <td>15</td>
-                </tr>
-            </table>
-        </section>
+        <div id="admin-dashboard" style="display:none;">
+            <section class="admin-actions">
+                <h2>Admin Actions</h2>
+                <ul>
+                    <li>Add a new course</li>
+                    <li>Edit existing course details</li>
+                    <li>Remove a course</li>
+                    <li>View enrolled students</li>
+                </ul>
+            </section>
+
+            <section class="course-list">
+                <h2>Current Courses</h2>
+                <table border="1" cellpadding="8" cellspacing="0">
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Instructor</th>
+                        <th>Seats Available</th>
+                    </tr>
+                    <tr>
+                        <td>Introduction to Web Development</td>
+                        <td>Mr. Sharma</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Database Fundamentals</td>
+                        <td>Ms. Rao</td>
+                        <td>15</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Online Course Management System</p>
     </footer>
+
+    <script>
+        // Demo-only hardcoded credentials (no backend available)
+        const ADMIN_USERNAME = "admin";
+        const ADMIN_PASSWORD = "admin123";
+
+        document.getElementById("admin-login-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("admin-username").value;
+            const password = document.getElementById("admin-password").value;
+            const errorMsg = document.getElementById("login-error");
+
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                document.getElementById("login-box").style.display = "none";
+                document.getElementById("admin-dashboard").style.display = "block";
+                errorMsg.style.display = "none";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
